@@ -1,0 +1,57 @@
+﻿@model IEnumerable<KMITL.Carlover.Models.SearchModel>
+@*@model  Registermodel*@
+@using Kendo.Mvc
+@using System.Data
+@using System.Linq
+@using KMITL.Carlover.Models
+@{
+    ViewBag.Title = "ViewCar";
+    var _CarloverController = "Carlover";
+}
+
+<div>ทะเบียนรถ:
+@(
+ Html.Kendo().DropDownListFor(m => m)
+                .OptionLabel("กก 1234")
+                .DataTextField("HoName")
+                .DataValueField("HoId")
+                .HtmlAttributes(new { data_bind = "value:HoId", style = "width: 250px" })
+                .Name("MemberType3")
+                .DataSource((source =>
+                {
+                    source.Read(read =>
+                    {
+                        read.Action("JsonHolidayRead", _CarloverController);
+                    })
+                    .ServerFiltering(true);
+                }))
+    )
+    &nbsp&nbsp&nbsp&nbsp&nbsp<button>add more car</button>
+ </div>
+
+<br />
+<div>
+     @(Html.Kendo().ProgressBar()
+           .Name("bar")
+           .Type(ProgressBarType.Percent)
+           .Animation(a => a.Duration(100))
+           .Value(30)
+       )
+</div>
+<br />
+<h2>รายละเอียดรถยนต์</h2>
+<br />
+<table style="width:100%">
+    <tr>
+        <td style="width:30%">
+            ประเภทรถยนต์ : รถเก๋ง 5 ประตู
+        </td>
+        <td style="width:30%">
+            รถยนต์ยี่ห่อ : TOYOTA 
+        </td>
+        <td style="width:30%">
+            รุ่น : Yaris 1.2 J ปี2013
+        </td>
+    </tr>
+</table>
+        

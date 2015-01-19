@@ -1,0 +1,68 @@
+﻿@model IEnumerable<KMITL.Carlover.Models.SearchModel>
+@*@model  Registermodel*@
+@using Kendo.Mvc
+@using System.Data
+@using System.Linq
+@using KMITL.Carlover.Models
+@{
+    ViewBag.Title = "CarHistory";
+    var _CarloverController = "Carlover";
+}
+
+
+<button>add New History</button>
+
+<br />
+<br />
+
+        
+<div>
+ 
+@(Html.Kendo().Grid(Model)
+    .Name("GridHistory")
+    .Columns(columns =>
+    {
+        //columns.Bound(p => p.AsId  ).Width(50).Title("No").Hidden();
+        //columns.Bound(p => p.InId).Width(100).Title("Instructor").EditorTemplateName("InstructorRange").ClientTemplate("#:InName#");
+        //columns.Bound(p => p.CoId).Width(100).Title("Course").EditorTemplateName("CourseRange").ClientTemplate("#:CoName#");
+        //columns.Bound(p => p.RtId ).Width(100).Title("RoomType").EditorTemplateName("RoomTypeRange2").ClientTemplate("#:RTName#");
+        //columns.Bound(p => p.SeId).Width(200).Title("Section").EditorTemplateName("SectionRange").ClientTemplate("# if(typeof(SeName) != 'undefined' && SeName != null) {#" + "#=SeName.join(',')#" + "#} #");
+        //columns.Bound(p => p.Duration ).Width(100).Title("Duration");
+        //columns.Bound(p => p.TimePerWeek).Width(100).Title("Time/Week");
+        //columns.Bound(p => p.TimePerTerm ).Width(100).Title("Time/Term");
+
+        columns.Bound(p => p.MemberID).Width(50).Title("ทะเบียนรถ");
+        columns.Template(@<a>ซ่อมรถ</a>).Width(70).Title("บริการ");
+        columns.Template(@<a>31/10/2557</a>).Width(70).Title("วันที่");
+     })
+    //.ToolBar(toolBar => toolBar.Template("<a href='javascript: void(0)' class='abutton create' onclick='createRow()' title='button create'>button create</a>"))
+    .HtmlAttributes(new { style = "height: 600px;" })
+    //.Editable(editable => { editable.Mode(GridEditMode.PopUp).TemplateName("AssignmentPopup").Window(w=> w.Title("Insert/Update")).DisplayDeleteConfirmation("Are you sure you want to delete this user?"); })
+    //.Editable(editable => { editable.Mode(GridEditMode.PopUp).DisplayDeleteConfirmation("Are you sure you want to delete this user?"); })    
+    //.Editable(editable => { editable.Mode(GridEditMode.InCell);  })
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .Pageable(pageable => pageable
+            .Refresh(true)
+            .PageSizes(true)
+            .ButtonCount(5))
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(5)
+        .Events(events =>
+            {
+                events.Error("error_handler");
+                //events.Sync("dataSource_requestEnd");   
+                events.RequestEnd("OnRequestEnd");
+                //events.Change("error_handler");
+                //events.Sync("error_handler");               
+            })
+        .Model(model => { 
+            model.Id(p => p.MemberID ); model.Field(p => p.MemberID ).Editable(false);
+             
+        })
+            .Read(read => read.Action("SelectSearch", _CarloverController))//.Type(HttpVerbs.Get))
+    )
+)
+</div>

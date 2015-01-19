@@ -1,0 +1,141 @@
+﻿@model IEnumerable<KMITL.Carlover.Models.SearchModel>
+@using Kendo.Mvc
+@using System.Data
+@using System.Linq
+@using KMITL.Carlover.Models
+@{
+    ViewBag.Title = "Recommend";
+    var _CarloverController = "Carlover";
+}
+
+<div>
+                @(Html.Kendo().MultiSelect()
+                .DataTextField("Text")
+                .DataValueField("Value")
+                .Name("Multi1")
+                .Placeholder("select service")
+                .BindTo(new List<ViewScheduleModel>()
+            {
+                new ViewScheduleModel() {Text = "1", Value = 1},
+                new ViewScheduleModel() {Text = "2", Value = 2},
+                new ViewScheduleModel() {Text = "3", Value = 3},
+                new ViewScheduleModel() {Text = "4", Value = 4},
+                new ViewScheduleModel() {Text = "5", Value = 5},
+                new ViewScheduleModel() {Text = "6", Value = 6},
+                new ViewScheduleModel() {Text = "7", Value = 7},
+                new ViewScheduleModel() {Text = "8", Value = 8},
+                new ViewScheduleModel() {Text = "9", Value = 9},
+                new ViewScheduleModel() {Text = "10", Value = 10},
+                new ViewScheduleModel() {Text = "11", Value = 11},
+                new ViewScheduleModel() {Text = "12", Value = 12},
+                new ViewScheduleModel() {Text = "13", Value = 13},
+                new ViewScheduleModel() {Text = "14", Value = 14},
+                new ViewScheduleModel() {Text = "15", Value = 15},
+                new ViewScheduleModel() {Text = "16", Value = 16},
+                new ViewScheduleModel() {Text = "17", Value = 17},
+                new ViewScheduleModel() {Text = "18", Value = 18},
+                new ViewScheduleModel() {Text = "19", Value = 19},
+                new ViewScheduleModel() {Text = "20", Value = 20},
+                new ViewScheduleModel() {Text = "21", Value = 21},
+                new ViewScheduleModel() {Text = "22", Value = 22},
+                new ViewScheduleModel() {Text = "23", Value = 23},
+                new ViewScheduleModel() {Text = "24", Value = 24}, 
+                new ViewScheduleModel() {Text = "25", Value = 25},
+                new ViewScheduleModel() {Text = "26", Value = 26},
+                new ViewScheduleModel() {Text = "27", Value = 27},
+                new ViewScheduleModel() {Text = "28", Value = 28},
+                new ViewScheduleModel() {Text = "29", Value = 29},
+                new ViewScheduleModel() {Text = "30", Value = 30}, 
+                new ViewScheduleModel() {Text = "31", Value = 31}
+            })
+                
+            )
+            </div>
+<button>GO</button>
+<br />
+<br />
+
+<table style="text-align:center">
+    <tr style="height:211px">
+        <td style="width:400px;border-color:salmon;border-right-width:6px;border-right-style:solid">
+            <img style="min-width:350px;max-width: 350px;min-height:200px;max-height:200px;margin-top:5px;margin-right:5px;margin-left:5px;" src="@Url.Content("~/Images/garage/samplegarage.png")"/>
+        </td>
+        <td style="width:400px;border-color:salmon;border-right-width:6px;border-right-style:solid">
+            <img style="min-width:350px;max-width: 350px;min-height:200px;max-height:200px;margin-top:5px;margin-right:5px;margin-left:5px;" src="@Url.Content("~/Images/garage/samplegarage2.png")"/>
+        </td>
+        <td style="width:400px">
+            <img style="min-width:350px;max-width: 350px;min-height:200px;max-height:200px;margin-top:5px;margin-right:5px;margin-left:5px;" src="@Url.Content("~/Images/garage/samplegarage2.png")"/>
+        </td>
+    </tr>
+     <tr>
+        <td class="abb" style="border-color:salmon;border-right-width:6px;border-right-style:solid">
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+        </td>
+        <td class="abb" style="border-color:salmon;border-right-width:6px;border-right-style:solid">
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+        </td>
+        <td class="abb">
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+        </td>
+    </tr>
+    <tr style="height:211px">
+        <td style="border-color:salmon;border-right-width:6px;border-right-style:solid">
+            <img style="min-width:350px;max-width: 350px;min-height:200px;max-height:200px;margin-top:5px;margin-right:5px;margin-left:5px;" src="@Url.Content("~/Images/garage/samplegarage2.png")"/>
+        </td>
+        <td style="border-color:salmon;border-right-width:6px;border-right-style:solid">
+            <img style="min-width:350px;max-width: 350px;min-height:200px;max-height:200px;margin-top:5px;margin-right:5px;margin-left:5px;" src="@Url.Content("~/Images/garage/samplegarage.png")"/>
+        </td>
+        <td>
+            <img style="min-width:350px;max-width: 350px;min-height:200px;max-height:200px;margin-top:5px;margin-right:5px;margin-left:5px;" src="@Url.Content("~/Images/garage/samplegarage.png")"/>
+        </td>
+    </tr>
+     <tr>
+        <td class="abb" style="border-color:salmon;border-right-width:6px;border-right-style:solid">
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+        </td>
+        <td class="abb" style="border-color:salmon;border-right-width:6px;border-right-style:solid">
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+        </td>
+        <td class="abb">
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+            <img class="abb" src="@Url.Content("~/Images/garage/star.png")"/>
+        </td>
+    </tr>
+    <tr style="height:20px">
+        <td style="border-color:salmon;border-right-width:6px;border-right-style:solid">
+            ใกล้บ้านที่สุด
+        </td>
+        <td style="border-color:salmon;border-right-width:6px;border-right-style:solid">
+            เป็นที่นิยม
+        </td>
+        <td>
+            คุณภาพดีที่สุด
+        </td>
+    </tr>
+</table>
+
+
+

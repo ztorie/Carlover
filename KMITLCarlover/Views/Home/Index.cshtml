@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    var latitude = "15";
+    var longitude = "102";
+}
+
+
+
+<div style="text-align:center">Welcome to Car Lover Homepage</div> 
+<table>
+@for(var i = 1; i < 11; i++)
+    {<tr><td style="border:solid">chone</td><td style="border:solid">benz</td></tr>}
+</table>
+
+
+@*<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=#AIzaSyCKeviJzz0zlIu2NM3e_JykCT7dWF2amMA#&sensor=false"></script>  
+ <script type="text/javascript">
+     $(document).ready(function () {
+         initialize();
+     });
+
+
+     //function initialize() {
+     //    var mapOptions = {
+     //        center: new google.maps.LatLng(6.9167, 79.8473),
+     //        zoom: 10,
+     //        mapTypeId: google.maps.MapTypeId.ROADMAP
+     //    };
+     //    var map = new google.maps.Map(document.getElementById("map_canvas"),
+     //      mapOptions);
+     //    // create a marker  
+     //    var latlng = new google.maps.LatLng(6.9167, 79.8473);
+     //    var marker = new google.maps.Marker({
+     //        position: latlng,
+     //        map: map,
+     //        title: 'My Place'
+     //    });
+     //}
+     var lati = '@latitude';
+     var logi = '@longitude';
+     function initialize() {
+         var mapOptions = {
+             center: new google.maps.LatLng(lati, logi),
+       zoom: 6,
+       mapTypeId: google.maps.MapTypeId.ROADMAP
+   };
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+      mapOptions);
+          // create a marker  
+    var latlng = new google.maps.LatLng(lati, logi);
+
+   var marker = new google.maps.Marker({
+       position: latlng,
+       map: map,
+       title: 'Latitude: ' + latlng.lat() + ' Longitude :' + latlng.lng(),
+       draggable: true
+   });
+   formlat = document.getElementById("latbox").value = latlng.lat();
+   formlng = document.getElementById("lngbox").value = latlng.lng();
+
+   infoWindow = new google.maps.InfoWindow({
+       content: ""
+   });
+   infoWindow.open(map, marker);
+   geocoder = new google.maps.Geocoder();
+
+          //Update postal address when the marker is dragged  
+   google.maps.event.addListener(marker, 'click', function () { //dragend  
+       geocoder.geocode({ latLng: marker.getPosition() }, function (responses) {
+           if (responses && responses.length > 0) {
+               infoWindow.setContent(
+               "<div style=\"font-size:smaller;\">" + responses[0].formatted_address
+               + "<br />"
+               + "Latitude: " + marker.getPosition().lat() + "&nbsp"
+               + "Longitude: " + marker.getPosition().lng() + "</div>"
+               );
+               infoWindow.open(map, marker);
+           } else {
+               alert('Error: Google Maps could not determine the address of this location.');
+           }
+           formlat = document.getElementById("latbox").value = marker.getPosition().lat();
+           formlng = document.getElementById("lngbox").value = marker.getPosition().lng();
+       });
+       map.panTo(marker.getPosition());
+   });
+          // Close the marker window when being dragged  
+   google.maps.event.addListener(marker, 'dragstart', function (event) {
+       infoWindow.close(map, marker);
+       var latlng = event.latLng;
+       formlat = document.getElementById("latbox").value = marker.getPosition().lat();
+       formlng = document.getElementById("lngbox").value = marker.getPosition().lng();
+   });
+
+   google.maps.event.addListener(marker, 'dragend', function (event) {
+       infoWindow.close(map, marker);
+       var latlng = event.latLng;
+       lati = formlat = document.getElementById("latbox").value = marker.getPosition().lat();
+       logi = formlng = document.getElementById("lngbox").value = marker.getPosition().lng();
+       marker.title = 'Latitude: ' + latlng.lat() + ' Longitude :' + latlng.lng();
+   });
+
+
+   formlat = document.getElementById("latbox").value = marker.getPosition().lat();
+   formlng = document.getElementById("lngbox").value = marker.getPosition().lng();
+}
+ </script>  
+ <div id="map_canvas" style="width: 640px; height: 480px;">  </div>
+                    <div id="latlong">
+                        <p>Latitude: <input size="20" type="text" id="latbox" name="lat" ></p>
+                        <p>Longitude: <input size="20" type="text" id="lngbox" name="lng" ></p>
+                    </div>
+*@

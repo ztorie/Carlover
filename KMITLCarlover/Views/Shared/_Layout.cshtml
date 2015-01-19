@@ -1,0 +1,76 @@
+﻿@{
+    var menu = "_PublicMenu";
+    var header = "_HeaderAdmission";
+    
+    menu = "_LearningMenu";
+    header = "_HeaderLearning";
+
+    
+    var y = "";
+    if((Session["MemberType"]) != null) {y = Session["MemberType"].ToString();} 
+    var x1 = "_leftmenu1";
+    var x2 = "_rightmenu1";
+    if (y == "Member") { x1 = "_leftmenu2"; x2 = "_rightmenu2"; header = "_HeaderLearning2"; }
+    if (y == "GarageMember") { x1 = "_leftmenu3"; x2 = "_rightmenu3"; header = "_HeaderLearning2"; }
+    if (y == "Administrator") { x1 = "_leftmenu4"; x2 = "_rightmenu1"; header = "_HeaderLearning2"; }
+}
+<!DOCTYPE html>
+<html 
+	<head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="utf-8" />
+
+	    <title>@ViewBag.Title</title>
+
+		<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2014.1.318/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+	    	<link href="@Url.Content("~/Content/kendo/2014.1.318/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+	    	<link href="@Url.Content("~/Content/kendo/2014.1.318/kendo.default.min.css")" rel="stylesheet" type="text/css" />
+	    	<link href="@Url.Content("~/Content/kendo/2014.1.318/kendo.dataviz.default.min.css")" rel="stylesheet" type="text/css" />
+	    
+        	<script src="@Url.Content("~/Scripts/kendo/2014.1.318/jquery.min.js")"></script>
+	    	<script src="@Url.Content("~/Scripts/kendo/2014.1.318/kendo.all.min.js")"></script>
+	    	<script src="@Url.Content("~/Scripts/kendo/2014.1.318/kendo.aspnetmvc.min.js")"></script>
+	    	<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+
+            <script src="@Url.Content("~/Scripts/kendo/2014.1.318/kendo.timezones.min.js")"></script>
+			<script src="@Url.Content("~/Scripts/cultures/kendo.culture.en-GB.min.js")"></script>
+            <script src="@Url.Content("~/Scripts/cultures/kendo.culture.en-US.min.js")"></script>
+            <script src="@Url.Content("~/Scripts/cultures/kendo.culture.th-TH.min.js")"></script>
+</head>
+	<body>
+		
+        @Html.Partial(header)
+		<div id="body">
+            <table><tr><td colspan="3" >
+            <div class="menu">
+                @Html.Partial(menu)
+            </div></td>
+            </tr>
+                <tr>
+                    <td style ="vertical-align:top;border-style :solid;border-width: 5px;background-color:#ff7b9d;">
+                        <br />
+                        <div class ="leftmenu";">
+                            @Html.Partial(x1)
+                        </div>
+                    </td>
+                    <td style ="width: 100%;">
+                        <div class="render-body">       
+                            @RenderBody()
+                        </div>
+                    </td>
+                    <td style ="vertical-align:top;border-style :solid;border-width: 5px;background-color:#ff7b9d;">
+                        <div class ="leftmenu" >
+                            @Html.Partial(x2)
+                        </div>
+                    </td>
+
+                   </tr>
+                </table>
+        </div>
+		<footer>
+            @Html.Partial("_Footer")
+		</footer>
+        @RenderSection("scripts", false)
+	</body>
+</html>

@@ -1,0 +1,11 @@
+﻿@{
+    var roleName = "";
+    var roleController = "";
+
+    roleName = @Resources.Resources.System;
+    roleController = "LEARNING";
+}
+<span class="page-title">
+    @Html.ActionLink(roleName, "Welcome", roleController, null, new { style = "text-decoration: none" }) >>
+    @ViewBag.Title
+</span>

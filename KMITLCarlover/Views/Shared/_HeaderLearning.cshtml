@@ -1,0 +1,22 @@
+﻿<table style="width:100%;border-bottom:dotted"><tbody style="width:100%"><tr>
+    <td style="width:150px;background-color:salmon">
+                        <div >
+                            <img src="@Url.Content("~/Content/images/header/carloverlogo.png")" />
+                        </div>
+    </td>
+    <td style="background-color:lightpink;" >
+                        <div >
+                            <img src="@Url.Content("~/Content/images/header/carlover.png")" />
+                        </div>
+    </td>
+    <td style="width:350px;background-color:salmon" >    
+                        <div >
+                            <form style="margin:0px 30px; width:80%" action="@(Url.Content("~") + "Carlover/login")">
+                                Username <br />
+                                <input type="text" name="Username"><br>
+                                Password<br />
+                                 <input type="password" name="Password"><br>
+                                <input type="submit" value="Submit">
+                            </form>
+                        </div>
+    </td></tr></tbody></table>

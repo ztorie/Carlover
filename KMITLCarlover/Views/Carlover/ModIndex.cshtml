@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "ModifyIndex";
+    var _controller = "Carlover";
+}
+
+
+@(Html.Kendo().TabStrip()
+    .Name("tabstrip") 
+    .Items(tab =>
+    {
+
+        tab.Add().Text("บริการที่คุณอาจสนใจ")
+        .Content("กำลังโหลด...")
+        .LoadContentFrom("GetOthRecommend", _controller);
+        
+       // tab.Add().Text("แนะนำอู่รถ")
+       //.Content("กำลังโหลด...")
+       // .LoadContentFrom("GetModRecommend", _controller);
+
+        tab.Add().Text("ค้นหาอู่รถ")
+       .Content("กำลังโหลด...")
+        .LoadContentFrom("GetModSearch", _controller);
+    })
+    .Events(events => events.Select("onSelect"))
+    .SelectedIndex(0)
+    .HtmlAttributes(new { style = "border: none; margin-left: 20px; margin-right: 20px" })
+)
+ <script type="text/javascript">
+     function error_handler(e) {
+         if (e.errors) {
+             var message = "Errors:\n";
+             $.each(e.errors, function (key, value) {
+                 if ('errors' in value) {
+                     $.each(value.errors, function () {
+                         message += this + "\n";
+                     });
+                 }
+             });
+             alert(message);
+         }
+     }
+    </script>
+<script >
+
+
+
+        function onSelect(e) {
+            //clear the current content of the tab before it's displayed to force the tabStrip to load it
+            //$(e.contentElement).html("");
+
+            //var tabStrip = $("#tabstrip").data("kendoTabStrip");
+            //tabStrip.tabGroup.on('click', 'li', function (e) {
+            //    var item = $(this),
+            //        index = item.index(),
+            //        contentElement = tabStrip.contentElements.eq(index);
+            //    if (!contentElement.is(":empty")) {
+            //        tabStrip.reload(item);
+            //    }
+            //});
+
+            var tabStrip = $("#tabstrip").data("kendoTabStrip");
+            for (var idx = 0; ; ++idx) {
+                var tab = tabStrip.contentElement(idx);
+                if (tab == null)
+                    break;
+                if (tab == e.contentElement) {
+                    //current tab logic
+                }
+                else {
+                    //all other tabs
+                    $(tab).html("");
+                }
+            }
+        }
+
+</script>

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<KMITL.Carlover.Models.BanMemberModel>
+@*@model  Registermodel*@
+@using Kendo.Mvc
+@using System.Data
+@using System.Linq
+@using KMITL.Carlover.Models
+@{
+    ViewBag.Title = "BanMember";
+    var _CarloverController = "Carlover";
+}
+
+<script type="text/javascript">
+
+     function OnRequestEnd(e) {
+         if (e.type == "create" || e.type == "update") {
+             var grid = $('#GridBan').data('kendoGrid');
+             grid.dataSource.read();       
+            
+        }
+     }
+     function error_handler(e) {
+         if (e.errors) {
+             var message = "Errors:\n";
+             $.each(e.errors, function (key, value) {
+                 if ('errors' in value) {
+                     $.each(value.errors, function () {
+                         message += this + "\n";
+                     });
+                 }
+             });
+             alert(message);
+         }
+     }
+    </script>
+
+<div>
+ 
+@(Html.Kendo().Grid(Model)
+    .Name("GridBan")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.MemberID).Width(50).Title("No").Hidden();
+        columns.Bound(p => p.Username).Width(100).Title("Username");
+        columns.Bound(p => p.Password).Width(100).Title("Password");
+        columns.Bound(p => p.MemberType).Width(100).Title("MemberType");
+        columns.Command(command =>
+        {
+            command.Edit()
+               .Text(@Resources.Resources.Update)
+               .UpdateText(@Resources.Resources.Update)
+               .CancelText(@Resources.Resources.Cancel)
+               .HtmlAttributes(new { title = @Resources.Resources.UpdateTooltip });
+            command.Destroy()
+                .Text(@Resources.Resources.Delete)
+                .HtmlAttributes(new { title = @Resources.Resources.DeleteTooltip });
+        }).Title(@Resources.Resources.Action).Width(150);
+    }
+    )
+    .ToolBar(toolbar => toolbar.Create() .Text( @Resources.Resources.Create) .HtmlAttributes(new { title =  @Resources.Resources.CreateTooltip}))
+    .HtmlAttributes(new { style = "height: 700px;" })
+    .Editable(editable => { editable.Mode(GridEditMode.InLine);  })
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .Pageable(pageable => pageable
+            .Refresh(true)
+            .PageSizes(true)
+            .ButtonCount(5))
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(5)
+        .ServerOperation(false)
+        .Events(events =>
+            {
+                events.Error("error_handler");  
+                events.RequestEnd("OnRequestEnd");           
+            })
+        .Model(model => { 
+            model.Id(p => p.MemberID ); model.Field(p => p.MemberID ).Editable(false);
+             
+        })
+
+                .Create(create => create.Action("MemberInsert", _CarloverController))
+                .Read(read => read.Action("MemberSelect", _CarloverController))//.Type(HttpVerbs.Get))
+                .Update(update => update.Action("MemberUpdate", _CarloverController))
+                .Destroy(destroy => destroy.Action("MemberDelete", _CarloverController))
+    )
+)
+</div>

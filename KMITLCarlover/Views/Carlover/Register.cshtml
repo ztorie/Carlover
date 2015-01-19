@@ -1,0 +1,59 @@
+﻿@*@model IEnumerable<KMITL.Carlover.Models.Registermodel>*@
+@model  Registermodel
+@using Kendo.Mvc
+@using System.Data
+@using System.Linq
+@using KMITL.Carlover.Models
+@{
+    ViewBag.Title = "register";
+    var _CarloverController = "Carlover";
+}
+<div style="border-bottom:dotted">
+
+@using (Html.BeginForm("comparedata", _CarloverController))
+{<table>
+        <tr>
+            <td>
+
+    @(
+ Html.Kendo().DropDownListFor(m => m.MemberType)
+                .OptionLabel("Select Member Type")
+                .DataTextField("MemberType")
+                .DataValueField("MemberType")
+                .BindTo(new List<Registermodel>()
+            {
+                new Registermodel() {MemberType = "Member"}, 
+                new Registermodel() {MemberType = "GarageMember"}
+            })
+                .Name("MemberType")
+        //.Events(e =>
+        //{
+        //    e.Select("select1");
+        //})
+    )
+            </td>
+        </tr>
+        <tr>
+            <td style ="width: 400px">Username:
+                @Html.TextBoxFor(m => m.Username)
+            </td>
+            <td style ="width: 400px">Password:
+                @Html.PasswordFor(m => m.Password)
+            </td>
+            <td style ="width: 550px">Confirm Password:
+                @Html.PasswordFor(m => m.CheckPassword)
+            </td>
+        </tr>
+        <tr>
+            <td>E-mail::
+            @Html.TextBoxFor(m => m.Email)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="comparedata" />
+            </td>
+        </tr>
+     </table>
+}
+    

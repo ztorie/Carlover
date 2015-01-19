@@ -1,0 +1,30 @@
+﻿
+@{
+         @(Html.Kendo().Menu()
+            .Name("mnu")
+            .Items(items =>
+            {
+                //items.Add().Text(@Resources .Resources .AcademicCalender  ).Url(Url.Content("~") + "AcademicCalender/Index");
+                ////items.Add().Text("จัดทำแผนการเรียน").Url(Url.Content("~") + "StudyPlan/Index");
+                //items.Add().Text(@Resources.Resources.TimeTable).Url(Url.Content("~") + "TimeTable/Index");
+                //items.Add().Text(@Resources .Resources .ExamSchedule ).Url(Url.Content("~") + "ExamSchedule/Index");
+                ////items.Add().Text("จัดห้องเรียน").Url(Url.Content("~") + "ClassArrangement/Index");
+                ////items.Add().Text("จัดห้องสอบ").Url(Url.Content("~") + "ExamRoomArrangement/Index");
+                //items.Add().Text(@Resources .Resources .ChangeTimeTable )
+                //    .Items(child =>
+                //    {
+                //        child.Add().Text(@Resources .Resources .CancleClass).Url(Url.Content("~") + "CancleClass/CC1");
+                //        child.Add().Text(@Resources .Resources .MakeupClass ).Url(Url.Content("~") + "MakeupClass/CC2");
+                //    });
+                ////items.Add().Text("GenDatabase").Url(Url.Content("~") + "GenDatabase/Index"); 
+                //items.Add().Text(@Resources .Resources .LearningLogOff ).Url(Url.Content("~") + "Learning/LogOff");
+                items.Add().Text("Home").Url(Url.Content("~") + "home/index");
+                items.Add().Text("บริการ").Url(Url.Content("~") + "Carlover/ModIndex");
+                //items.Add().Text("แต่งรถ").Url(Url.Content("~") + "Carlover/ModIndex");
+                items.Add().Text("ความรู้เรื่องรถ").Url(Url.Content("~") + "AcademicCalender/Index");
+
+            })
+            .HtmlAttributes(new { style = "width:100%; border: none; background-color: inherit;" })
+        )       
+
+}

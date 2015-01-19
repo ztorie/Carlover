@@ -1,0 +1,418 @@
+﻿@model Reviewmodel
+@*@model  Registermodel*@
+@using Kendo.Mvc
+@using System.Data
+@using System.Linq
+@using KMITL.Carlover.Models
+@{
+    ViewBag.Title = "Garage";
+    var _CarloverController = "Carlover";
+}
+
+<div>JEPANESE CAR REPAIR</div>
+<div style ="width:100%;max-height:600px;">
+        <table>
+            <tr>
+                <td>
+                    <img style="min-width:500px;max-width: 550px;min-height:300px;max-height:375px;margin-top:5px;margin-right:5px;margin-left:5px;" src="@Url.Content("~/Images/garage/samplegarage.png")"/>
+                </td>
+                <td colspan="5" style="vertical-align:top">
+                    <div>
+                        <a>อู่ของเราเน้นความรวดเร็ว <br /> ทำงานละเอียด เรียบร้อย ส่งงานตรงเวลา</a>
+                    </div>
+                </td>
+            </tr>
+            </table>
+    <table> 
+            <tr>
+                <td style="width:60%"><h4>บริการที่มี</h4></td>
+                <td colspan="5" ><h4>คะแนนที่ได้</h4></td>
+            </tr>
+            <tr>
+                <td>บริการแต่งสี</td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+            </tr>
+        <tr>
+                <td>บริการติดกันชน</td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+            </tr>
+    </table>     
+            
+</div>
+
+    @if (Model != null)
+    {
+        for (var i = 1; i < 2; i++)
+        {
+                 
+        
+                     <table style="width:100%;background-color:lightyellow">
+            <tr>
+                <td colspan="6" style="border-bottom:solid">
+                    <button style="float:right">Report to Admin</button>
+                    @*<h3>บริการแต่งสีรถยนต์</h3>*@
+                </td>
+            </tr> 
+            <tr>
+                <td colspan="6" style="border-bottom:dotted"> @Html.Raw(HttpUtility.HtmlDecode(Model.Content))</td>
+            </tr>
+            <tr>
+                <td colspan="6" ><h3>รีวิวนี้ได้ทำการให้คะแนน</h3></td>
+            </tr>
+            <tr >
+                <td>ตรงต่อเวลาในการส่งมอบงาน:</td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+            </tr>
+            <tr >
+                <td>เจ้าหน้าที่ผู้ให้บริการ:</td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+            </tr>
+            <tr >
+                <td>สิ่งอำนวยความสะดวก/สถานที่:</td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+            </tr>
+            <tr >
+                <td>คุณภาพงาน:</td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+            </tr>
+            <tr >
+                <td><h3>ความน่าเชื่อถือของรีวิวนี้:</h3></td>
+                <td class="abb"><h3><img class="abb" src="@Url.Content("~/Images/garage/creditstar.png")"/></h3></td>
+                <td class="abb"><h3><img class="abb" src="@Url.Content("~/Images/garage/creditstar.png")"/></h3></td>
+                <td class="abb"><h3><img class="abb" src="@Url.Content("~/Images/garage/creditstar.png")"/></h3></td>
+                <td class="abb"><h3><img class="abb" src="@Url.Content("~/Images/garage/creditstar.png")"/></h3></td>
+                <td class="abb"><h3><img class="abb" src="@Url.Content("~/Images/garage/creditstar.png")"/></h3></td>
+            </tr>
+    </table>
+        }
+    }
+<style>
+    .abb {
+        width: 35px;
+        height:35px;
+        max-width: 35px;
+        min-height:35px;
+    }
+</style>
+
+<br />
+<br />
+        
+<div >
+    <table style="width:100%;background-color:lightyellow">
+            <tr>
+                <td colspan="6" style="border-bottom:solid">
+                    <button style="float:right">Report to Admin</button>
+                    @*<h3>บริการแต่งสีรถยนต์</h3>*@
+                </td>
+            </tr> 
+            <tr>
+                <td colspan="6" style="border-bottom:dotted">อู่นี้บริการดี พนักงานค่อนข้างยิ้มแย้มแจ่มใส ทำงานตรงต่อเวลา</td>
+            </tr>
+            <tr>
+                <td colspan="6" ><h3>รีวิวนี้ได้ทำการให้คะแนน</h3></td>
+            </tr>
+            <tr >
+                <td>ตรงต่อเวลาในการส่งมอบงาน:</td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+            </tr>
+            <tr >
+                <td>เจ้าหน้าที่ผู้ให้บริการ:</td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+            </tr>
+            <tr >
+                <td>สิ่งอำนวยความสะดวก/สถานที่:</td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+            </tr>
+            <tr >
+                <td>คุณภาพงาน:</td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+            </tr>
+            <tr >
+                <td><h3>ความน่าเชื่อถือของรีวิวนี้:</h3></td>
+                <td class="abb"><h3><img class="abb" src="@Url.Content("~/Images/garage/creditstar.png")"/></h3></td>
+                <td class="abb"><h3><img class="abb" src="@Url.Content("~/Images/garage/creditstar.png")"/></h3></td>
+                <td class="abb"><h3><img class="abb" src="@Url.Content("~/Images/garage/creditstar.png")"/></h3></td>
+                <td class="abb"><h3><img class="abb" src="@Url.Content("~/Images/garage/creditstar.png")"/></h3></td>
+                <td class="abb"><h3><img class="abb" src="@Url.Content("~/Images/garage/creditstar.png")"/></h3></td>
+            </tr>
+    </table>
+</div>
+<br />
+<br />
+    <div style="width:100%;">
+    <table style="float:right"> 
+            <tr>
+                <td>คุณคิดเห็นว่ารีวิวนี้น่าเชื่อถือ:</td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/creditstar.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/creditstar.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/creditstar.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/creditstar.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/creditstar.png")"/></td>
+            </tr>
+    </table>
+</div>
+<br />
+@*<div>
+@(
+ Html.Kendo().DropDownListFor(m => m)
+                .OptionLabel("เลือกบริการ..")
+                .DataTextField("HoName")
+                .DataValueField("HoId")
+                .HtmlAttributes(new { data_bind = "value:HoId", style = "width: 250px" })
+                .Name("MemberType3")
+                .DataSource((source =>
+                {
+                    source.Read(read =>
+                    {
+                        read.Action("JsonHolidayRead", _CarloverController);
+                    })
+                    .ServerFiltering(true);
+                }))
+    )
+ </div>*@
+
+
+
+@using (Html.BeginForm("sendreview", _CarloverController))
+{
+@(Html.Kendo().Editor()
+      .Name("Content")
+      .HtmlAttributes(new { style = "width: 740px;height:440px" })
+      .Value("")
+      .Encode(false)
+.ImageBrowser(imageBrowser => imageBrowser
+    .Image("~/Content/UserFiles/Images/{0}")
+    .Read("Read", "ImageBrowser")
+    .Create("Create", "ImageBrowser")
+    .Destroy("Destroy", "ImageBrowser")
+    .Upload("Upload", "ImageBrowser")
+    .Thumbnail("Thumbnail", "ImageBrowser"))
+)
+
+            <table>
+            <tr>
+                <td colspan="2">คุณให้คะแนนด้านต่างๆดังนี้</td>
+            </tr>
+                <tr >
+                <td>ตรงต่อเวลาในการส่งมอบงาน:</td>
+                <td>
+                    <div class="rating1">
+                        <span><input type="radio" name="rating1" id="str5" value="5"><label for="str5"></label></span>
+                        <span><input type="radio" name="rating1" id="str4" value="4"><label for="str4"></label></span>
+                        <span><input type="radio" name="rating1" id="str3" value="3"><label for="str3"></label></span>
+                        <span><input type="radio" name="rating1" id="str2" value="2"><label for="str2"></label></span>
+                        <span><input type="radio" name="rating1" id="str1" value="1"><label for="str1"></label></span>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td>เจ้าหน้าที่ผู้ให้บริการ:</td>
+                <td>
+                    <div class="rating2">
+                        <span><input type="radio" name="rating2" id="str10" value="5"><label for="str10"></label></span>
+                        <span><input type="radio" name="rating2" id="str9" value="4"><label for="str9"></label></span>
+                        <span><input type="radio" name="rating2" id="str8" value="3"><label for="str8"></label></span>
+                        <span><input type="radio" name="rating2" id="str7" value="2"><label for="str7"></label></span>
+                        <span><input type="radio" name="rating2" id="str6" value="1"><label for="str6"></label></span>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td>สิ่งอำนวยความสะดวก/สถานที่:</td>
+                <td>
+                    <div class="rating3">
+                        <span><input type="radio" name="rating3" id="str15" value="5"><label for="str15"></label></span>
+                        <span><input type="radio" name="rating3" id="str14" value="4"><label for="str14"></label></span>
+                        <span><input type="radio" name="rating3" id="str13" value="3"><label for="str13"></label></span>
+                        <span><input type="radio" name="rating3" id="str12" value="2"><label for="str12"></label></span>
+                        <span><input type="radio" name="rating3" id="str11" value="1"><label for="str11"></label></span>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td>คุณภาพงาน:</td>
+                <td>
+                    <div class="rating4">
+                        <span><input type="radio" name="rating4" id="str20" value="5"><label for="str20"></label></span>
+                        <span><input type="radio" name="rating4" id="str19" value="4"><label for="str19"></label></span>
+                        <span><input type="radio" name="rating4" id="str18" value="3"><label for="str18"></label></span>
+                        <span><input type="radio" name="rating4" id="str17" value="2"><label for="str17"></label></span>
+                        <span><input type="radio" name="rating4" id="str16" value="1"><label for="str16"></label></span>
+                    </div>
+                </td>              
+            </tr>
+            @*<tr >
+                <td>คุณภาพงาน:</td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+                <td class="abb"><img class="abb" src="@Url.Content("~/Images/garage/star.png")"/></td>
+            </tr>*@
+            </table>
+    
+    @*<div class="rating">
+    <span><input type="radio" name="rating1" id="str5" value="5"><label for="str5"></label></span>
+    <span><input type="radio" name="rating1" id="str4" value="4"><label for="str4"></label></span>
+    <span><input type="radio" name="rating1" id="str3" value="3"><label for="str3"></label></span>
+    <span><input type="radio" name="rating1" id="str2" value="2"><label for="str2"></label></span>
+    <span><input type="radio" name="rating1" id="str1" value="1"><label for="str1"></label></span>
+</div>*@
+
+    <div>
+        <input type="submit" value="Post" class="k-button"/>
+    </div>}
+@*<button id="getreview" class="k-button">Post review</button>*@
+@*<script>
+    $(document).ready(function() {
+        var editor = $("#Content").data("kendoEditor");
+        $("#getreview").click(function() {
+            alert(editor.value());
+        });
+    });
+</script>*@
+
+
+
+
+
+
+@*<script src="@Url.Content("http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js")"></script>*@
+<script >
+    $(document).ready(function () {
+        //  Check Radio-box
+        $(".rating1 input:radio").attr("checked", false);
+        $('.rating1 input').click(function () {
+            $(".rating1 span").removeClass('checked');
+            $(this).parent().addClass('checked');
+        });
+
+        $(".rating2 input:radio").attr("checked", false);
+        $('.rating2 input').click(function () {
+            $(".rating2 span").removeClass('checked');
+            $(this).parent().addClass('checked');
+        });
+
+        $(".rating3 input:radio").attr("checked", false);
+        $('.rating3 input').click(function () {
+            $(".rating3 span").removeClass('checked');
+            $(this).parent().addClass('checked');
+        });
+
+        $(".rating4 input:radio").attr("checked", false);
+        $('.rating4 input').click(function () {
+            $(".rating4 span").removeClass('checked');
+            $(this).parent().addClass('checked');
+        });
+
+        $(".rating5 input:radio").attr("checked", false);
+        $('.rating5 input').click(function () {
+            $(".rating5 span").removeClass('checked');
+            $(this).parent().addClass('checked');
+        });
+
+        $('input:radio').change(
+        function () {
+            var userRating = this.value;
+            alert(userRating);
+        });
+    });
+</script>
+<style>
+    .rating1,.rating2,.rating3,.rating4,.rating5 {
+    float:left;
+    width:300px;
+}
+.rating1 span,.rating2 span,
+.rating3 span,.rating4 span,
+.rating5 span { float:right; position:relative; 
+}
+.rating1 span input,.rating2 span input,
+.rating3 span input,.rating4 span input,
+.rating5 span input {
+    position:absolute;
+    top:0px;
+    left:0px;
+    opacity:0;
+}
+.rating1 span label,.rating2 span label,
+.rating3 span label,.rating4 span label,
+.rating5 span label {
+    display:inline-block;
+    width:20px;
+    height:20px;
+    text-align:center;
+    color:#FFF;
+    background:#ccc;
+    font-size:30px;
+    margin-right:2px;
+    line-height:30px;
+    border-radius:50%;
+    -webkit-border-radius:50%;
+}
+.rating1 span:hover ~ span label,
+.rating1 span:hover label,
+.rating1 span.checked label,
+.rating1 span.checked ~ span label,
+.rating2 span:hover ~ span label,
+.rating2 span:hover label,
+.rating2 span.checked label,
+.rating2 span.checked ~ span label,
+.rating3 span:hover ~ span label,
+.rating3 span:hover label,
+.rating3 span.checked label,
+.rating3 span.checked ~ span label,
+.rating4 span:hover ~ span label,
+.rating4 span:hover label,
+.rating4 span.checked label,
+.rating4 span.checked ~ span label,
+.rating5 span:hover ~ span label,
+.rating5 span:hover label,
+.rating5 span.checked label,
+.rating5 span.checked ~ span label {
+    background:#F90;
+    color:#FFF;
+}
+</style>
+    

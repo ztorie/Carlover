@@ -1,0 +1,29 @@
+﻿@model IEnumerable<KMITL.Carlover.Models.SearchModel>
+@using Kendo.Mvc
+@using System.Data
+@using System.Linq
+@using KMITL.Carlover.Models
+@{
+    ViewBag.Title = "OthRecommend";
+    var _CarloverController = "Carlover";
+}
+
+<table style="text-align:center">
+    <tr style="height:211px">
+        <td style="width:400px;border-color:salmon;border-right-width:6px;border-right-style:solid">
+            <img style="min-width:350px;max-width: 350px;min-height:200px;max-height:200px;margin-top:5px;margin-right:5px;margin-left:5px;" src="@Url.Content("~/Images/garage/samplegarage.png")"/>
+        </td>
+        <td style="width:400px;border-color:salmon;border-right-width:6px;border-right-style:solid">
+            <img style="min-width:350px;max-width: 350px;min-height:200px;max-height:200px;margin-top:5px;margin-right:5px;margin-left:5px;" src="@Url.Content("~/Images/garage/samplegarage2.png")"/>
+        </td>
+    </tr>
+     <tr>
+        <td class="abb" style="border-color:salmon;border-right-width:6px;border-right-style:solid">
+            บริการพ้นสี
+        </td>
+        <td class="abb" style="border-color:salmon;border-right-width:6px;border-right-style:solid">
+            บริการติดกันชน
+        </td>
+    </tr>
+
+</table>

@@ -158,9 +158,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Carlover\AddServiceController.cs" />
+    <Compile Include="Controllers\Carlover\BanUserController.cs" />
     <Compile Include="Controllers\Carlover\ModIndexController.cs" />
     <Compile Include="Controllers\Carlover\CarHistoryController.cs" />
-    <Compile Include="Controllers\Carlover\BanMemberController.cs" />
     <Compile Include="Controllers\Carlover\GarageController.cs" />
     <Compile Include="Controllers\Carlover\ViewCarController.cs" />
     <Compile Include="Controllers\Carlover\SearchController.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Carlover\AddServicemodel.cs" />
     <Compile Include="Models\Carlover\BanMembermodel.cs" />
     <Compile Include="Models\Carlover\Reviewmodel.cs" />
     <Compile Include="Models\Carlover\Searchmodel.cs" />
@@ -1068,7 +1070,6 @@
     <Content Include="Views\Carlover\ViewCar.cshtml" />
     <Content Include="Views\Carlover\CarHistory.cshtml" />
     <Content Include="Views\Carlover\Garage.cshtml" />
-    <Content Include="Views\Carlover\BanMember.cshtml" />
     <Content Include="Views\Carlover\ModIndex.cshtml" />
     <Content Include="Views\Carlover\OthRecommend.cshtml" />
     <Content Include="Views\Carlover\Recommend.cshtml" />
@@ -1077,6 +1078,8 @@
     <Content Include="Views\Carlover\Copy of Register.cshtml" />
     <Content Include="Views\Carlover\GarageMemberRegister.cshtml" />
     <Content Include="Views\Carlover\Copy of MemberRegister.cshtml" />
+    <Content Include="Views\Carlover\BanUser.cshtml" />
+    <Content Include="Views\Carlover\AddService.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

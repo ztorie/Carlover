@@ -1,0 +1,58 @@
+﻿@model BanMemberModel
+@*@model  Registermodel*@
+@using Kendo.Mvc
+@using System.Data
+@using System.Linq
+@using KMITL.Carlover.Models
+@{
+    ViewBag.Title = "BanUser";
+    var _CarloverController = "Carlover";
+}
+<script>
+    var d = '@ViewBag.Banbag';
+</script>
+@*@ViewBag.Banbag*@
+<div >
+@using (Html.BeginForm("Ban", _CarloverController, FormMethod.Post, new { id = "submitForm" }))
+{
+<table>
+        <tr>
+            <td>
+                Username:@Html.TextBoxFor(m => m.Username) 
+            </td> 
+            <td> 
+                <input type="submit" id="BanBan" name="Command" value="Ban" hidden>
+                <input type="submit" id="UnBan" name="Command" value="UnBan" hidden>
+            </td>
+        </tr> 
+        <tr>
+            <td> 
+                <input type="submit" id="Search" name="Command" value="Search"> 
+                <input type="submit" id="Cancel" name="Command" value="Cancel">
+            </td>
+        </tr>
+</table>
+
+}
+</div>
+<script>
+    $("form").submit(function () {
+        $("input").removeAttr("disabled");
+    });
+    if (d == 1) {
+        $("#Username").attr("disabled", "disabled")
+        @if (Model != null)
+        {
+            var b = Model.MemberStatus;
+            if (b == "")
+            {
+            @:$("#BanBan").show();
+                }
+            else if (b == "Ban")
+            {
+            @:$("#UnBan").show();
+                }
+        }
+}
+    else;
+</script>

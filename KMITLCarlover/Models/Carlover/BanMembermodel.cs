@@ -11,74 +11,82 @@ using Kendo.Mvc.UI;
 namespace KMITL.Carlover.Models
 {
     public class BanMemberModel
-    {     
+    {
         //[Required]
         [Display(Name = "MemberID :")]
-        public int MemberID { get; set; }
+        public decimal MemberID { get; set; }
         //[Required]
         [Display(Name = "Username :")]
         public string Username { get; set; }
         //[Required]
-        [Display(Name = "Username :")]
+        [Display(Name = "Password :")]
         public string Password { get; set; }
-        //[Required]
-        [Display(Name = "CitizenID :")]
-        public decimal CitizenID { get; set; }
         //[Required]
         [Display(Name = "Email :")]
         public string Email { get; set; }
         //[Required]
         [Display(Name = "MemberType :")]
-        public int MemberType { get; set; }
+        public string MemberType { get; set; }
         //[Required]
-        [Display(Name = "StatusName :")]
-        public string StatusName { get; set; }
+        [Display(Name = "MemberStatus :")]
+        public string MemberStatus { get; set; }
+        //[Required]
+        [Display(Name = "Ban :")]
+        public string Ban { get; set; }
 
-        public static List<BanMemberModel> MemberSelect()
-        {
+        public static List<BanMemberModel> MemberSearch(string Username)
+        { 
             List<BanMemberModel> list = new List<BanMemberModel>();
             SqlConnection cn = new SqlConnection(GlobalVariables.ConnCarlover);
             cn.Open();
-            SqlCommand cmd = new SqlCommand("Select MemberID,Username,Password,MemberType From Member", cn);
+            SqlCommand cmd = new SqlCommand("Select MemberID,Username,Password,MemberType,MemberStatus From Member where Username ='" + Username + "'", cn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
             foreach (DataRow dr in dt.Rows)
             {
                 BanMemberModel u = new BanMemberModel();
-                u.MemberID = ((int)dr["MemberID"]);
+                u.MemberID = ((decimal)dr["MemberID"]);
                 u.Username = dr["Username"].ToString();
                 u.Password = dr["Password"].ToString();
-                u.MemberType = ((int)dr["MemberType"]);
+                u.Password = dr["MemberType"].ToString();
+                u.MemberStatus = dr["MemberStatus"].ToString();
                 list.Add(u);
             }
             cn.Close();
             return list;
-            
         }
-        public static int MemberAdd(String _Username,String _Password,int _MemberType)
+        public static List<BanMemberModel> MemberBan(string Username)
         {
+            List<BanMemberModel> list = new List<BanMemberModel>();
             SqlConnection cn = new SqlConnection(GlobalVariables.ConnCarlover);
             cn.Open();
-            SqlCommand cmd = new SqlCommand("Insert Into Member(MemberID,Username,Password,MemberType) Values((select isnull(max(MemberID),0)+1 from Member),'" + _Username + "','" + _Password + "'," + _MemberType + ")", cn);
+            SqlCommand cmd = new SqlCommand("Update Member set MemberStatus = 'Ban' where Username = '" + Username + "'", cn);
             int i = cmd.ExecuteNonQuery();
-            
             cn.Close();
-            return i;
-
+            return list;
         }
-
-        public static int MemberDelete(int _MemberID)
+        public static List<BanMemberModel> MemberUnBan(string Username)
         {
+            List<BanMemberModel> list = new List<BanMemberModel>();
             SqlConnection cn = new SqlConnection(GlobalVariables.ConnCarlover);
             cn.Open();
-            SqlCommand cmd = new SqlCommand("Delete from Member where MemberID = " + _MemberID , cn);
+            SqlCommand cmd = new SqlCommand("Update Member set MemberStatus = NULL where Username = '" + Username + "'", cn);
             int i = cmd.ExecuteNonQuery();
-
             cn.Close();
-            return i;
-
+            return list;
         }
+        //public static void MemberBan1(string Username)
+        //{
+        //    List<BanMemberModel> list = new List<BanMemberModel>();
+        //    SqlConnection cn = new SqlConnection(GlobalVariables.ConnCarlover);
+        //    cn.Open();
+        //    SqlCommand cmd = new SqlCommand("Update Member set Ban = 'Ban' where Username = '" + Username + "'", cn);
+        //    int i = cmd.ExecuteNonQuery();
+        //    cn.Close();
+        //    //return i;
+        //}
     }
 }
+
 
